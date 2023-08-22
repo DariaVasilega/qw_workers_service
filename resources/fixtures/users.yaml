@@ -1,0 +1,8 @@
+\App\Domain\User:
+  user{1..99}:
+    id (unique): '<current()>'
+    email (unique): '<email()>'
+    firstname: '<firstName()>'
+    middlename: '<firstName()>'
+    lastname: '<lastName()>'
+    dob: '<date_create()>'
