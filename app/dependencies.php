@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Application\Directory\LocaleInterface;
 use App\Application\Settings\SettingsInterface;
+use App\Infrastructure\Filesystem\Log\PositionActionLogger;
 use App\Infrastructure\Filesystem\Log\UserActionLogger;
 use DI\ContainerBuilder;
 use Illuminate\Container\Container as IlluminateContainer;
@@ -82,6 +83,16 @@ return function (ContainerBuilder $containerBuilder) {
             $userActionsLogger->setHandlers([$handler]);
 
             return new UserActionLogger($userActionsLogger);
+        },
+        PositionActionLogger::class => function (ContainerInterface $c) {
+            $logger = $c->get(LoggerInterface::class);
+            $logFile = isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/position_action.log';
+            $handler = new StreamHandler($logFile, Logger::ERROR);
+
+            $positionActionsLogger = $logger->withName('position-action');
+            $positionActionsLogger->setHandlers([$handler]);
+
+            return new PositionActionLogger($positionActionsLogger);
         },
         FilesystemAdapter::class => function (ContainerInterface $c) {
             return new \League\Flysystem\Local\LocalFilesystemAdapter(dirname(__DIR__));
