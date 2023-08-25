@@ -1,0 +1,4 @@
+\App\Domain\Position:
+  position_{worker, director, accountant}:
+    code: '<current()>'
+    label: '<ucfirst(<current()>)>'
