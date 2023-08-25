@@ -11,6 +11,9 @@ return function (\Slim\App $app) {
             $router->get('', \App\Application\Actions\User\Read::class);
             $router->put('', \App\Application\Actions\User\Update::class);
             $router->delete('', \App\Application\Actions\User\Delete::class);
+
+            // User Position History Route
+            $router->get('/position-history', \App\Application\Actions\User\Position\History::class);
         });
     });
 

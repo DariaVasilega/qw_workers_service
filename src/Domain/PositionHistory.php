@@ -10,6 +10,7 @@ namespace App\Domain;
  * @property string $position_code
  * @property float $salary
  * @property string $from_date
+ * @property Position $position
  */
 class PositionHistory extends \Illuminate\Database\Eloquent\Model
 {
@@ -32,4 +33,26 @@ class PositionHistory extends \Illuminate\Database\Eloquent\Model
         'salary',
         'from_date',
     ];
+
+    /**
+     * @inheritDoc
+     */
+    protected $with = [
+        'position'
+    ];
+
+    /**
+     * @inheritDoc
+     */
+    protected $hidden = [
+        'position_code'
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function position(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Position::class, 'code', 'position_code');
+    }
 }

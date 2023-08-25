@@ -11,6 +11,7 @@ namespace App\Domain;
  * @property string $middlename
  * @property string $lastname
  * @property string $dob
+ * @property \Illuminate\Database\Eloquent\Collection $positions
  */
 class User extends \Illuminate\Database\Eloquent\Model
 {
@@ -34,4 +35,12 @@ class User extends \Illuminate\Database\Eloquent\Model
         'lastname',
         'dob',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function positions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PositionHistory::class, 'user_id', 'id');
+    }
 }
