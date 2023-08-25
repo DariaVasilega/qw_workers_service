@@ -24,4 +24,15 @@ return function (\Slim\App $app) {
             $router->delete('', \App\Application\Actions\Position\Delete::class);
         });
     });
+
+    // Position History CRUD
+    $app->group('/position-histor', function (\Slim\Interfaces\RouteCollectorProxyInterface $router) {
+        $router->post('y', \App\Application\Actions\PositionHistory\Create::class);
+        $router->get('ies', \App\Application\Actions\PositionHistory\ReadList::class);
+        $router->group('y/{id:[0-9]+}', function (\Slim\Interfaces\RouteCollectorProxyInterface $router) {
+            $router->get('', \App\Application\Actions\PositionHistory\Read::class);
+            $router->put('', \App\Application\Actions\PositionHistory\Update::class);
+            $router->delete('', \App\Application\Actions\PositionHistory\Delete::class);
+        });
+    });
 };
