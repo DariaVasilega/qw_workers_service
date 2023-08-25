@@ -1,0 +1,7 @@
+\App\Domain\PositionHistory:
+  position_history_{1..300}:
+    id (unique): '<current()>'
+    user_id: '<($current < 100 ? $current : rand(1, 99))>'
+    position_code: '<($current % 50 === 0 ? "director" : ($current % 30 === 0 ? "accountant" : "worker"))>'
+    salary: '<(rand(11221, 20663) / 10)>'
+    from_date: '<dateTimeBetween("-10 years", "now")>'
