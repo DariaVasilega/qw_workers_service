@@ -102,7 +102,6 @@ $emails = [
     'michael.wilson@protonmail.com',
     'linda.thomas@live.com',
     'robert.wright@mail.com',
-    'elizabeth.wilson@gmx.com',
 ];
 
 $fixtures = [];
