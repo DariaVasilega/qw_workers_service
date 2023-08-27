@@ -6,3 +6,10 @@
     middlename: '<firstName()>'
     lastname: '<lastName()>'
     dob: '<date_create()>'
+  user100:
+    id (unique): '100'
+    email (unique): 'dariavasilega@gmail.com'
+    firstname: 'Daria'
+    middlename: 'Yuriyvna'
+    lastname: 'Makarenko'
+    dob: '2001-03-20'
