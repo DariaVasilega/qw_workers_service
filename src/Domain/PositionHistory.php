@@ -11,6 +11,7 @@ namespace App\Domain;
  * @property float $salary
  * @property string $from_date
  * @property Position $position
+ * @property User $user
  */
 class PositionHistory extends \Illuminate\Database\Eloquent\Model
 {
@@ -54,5 +55,10 @@ class PositionHistory extends \Illuminate\Database\Eloquent\Model
     public function position(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Position::class, 'code', 'position_code');
+    }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

@@ -36,6 +36,7 @@ class User extends \Illuminate\Database\Eloquent\Model
         'middlename',
         'lastname',
         'dob',
+        'current_position_id',
     ];
 
     /**
